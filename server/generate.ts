@@ -202,10 +202,16 @@ async function callGemini(prompt: string, clientSignal: AbortSignal): Promise<st
     if (upstream.status === 429) {
       throw new UpstreamError(429, "rate_limited", "The AI provider's rate limit was hit. Wait a moment and retry.");
     }
-    if (upstream.status === 400 || upstream.status === 403) {
-      throw new UpstreamError(502, "upstream_rejected", "The AI provider rejected the request (check the API key and model name).");
+    if (upstream.status === 404) {
+      throw new UpstreamError(502, "upstream_rejected", `Model "${MODEL}" wasn't found for this API key. Set GEMINI_MODEL in .env to a model your key can use.`);
     }
-    throw new UpstreamError(502, "upstream_error", "The AI provider returned an error.");
+    if (upstream.status === 400 || upstream.status === 401 || upstream.status === 403) {
+      throw new UpstreamError(502, "upstream_rejected", `The AI provider rejected the request: ${providerMsg}`);
+    }
+    if (upstream.status === 503) {
+      throw new UpstreamError(503, "upstream_error", "The AI model is overloaded right now. Try again in a few seconds.");
+    }
+    throw new UpstreamError(502, "upstream_error", `The AI provider returned an error (HTTP ${upstream.status}).`);
   }
 
   if (body?.promptFeedback?.blockReason) {
