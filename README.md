@@ -22,7 +22,7 @@ cp .env.example .env        # then paste your key into GEMINI_API_KEY
 npm install && npm start
 ```
 
-Open **http://localhost:5173**.
+Open **https://study-assistant-ulm1.onrender.com**.
 
 `npm start` runs two processes:
 
