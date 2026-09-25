@@ -152,6 +152,4 @@ I did not use an AI SDK. The Gemini call is a plain `fetch`, so I can explain ev
 
 **What I'd do next:** stream cards in as they're generated, add a refinement loop ("make these harder", "add 5 more on X"), shuffle options in re-test rounds, and keep a history of saved study sets.
 
-## Time spent
 
-_Fill in honestly, e.g. ~X h total: design & data shape · backend proxy · validation & failure handling · UI · README & recording._
