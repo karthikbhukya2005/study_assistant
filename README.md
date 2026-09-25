@@ -7,7 +7,7 @@ Paste notes or type a topic. The app asks an LLM (Google Gemini) for a **structu
 
 It is not a chatbot: the model's text is never shown directly. It is parsed, checked and turned into React state.
 
-> 📹 Demo recording: **https://drive.google.com/file/d/1yq1OTxUKHhyGxkBQfiYGQUipTsB1o0OJ/view?usp=drive_link**.
+> 📹 Demo recording: **https://drive.google.com/file/d/1yq1OTxUKHhyGxkBQfiYGQUipTsB1o0OJ/view?usp=sharing**.
 
 ---
 
